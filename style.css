@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.human-selection
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid red;
+    border-radius:  10px;
+    padding: 15px;
+    width: 500px;
+    height: 175px;    
+}
+.human-selection h1{
+    margin: 10px;
+}
+.human-selection button{
+    width: 125px;
+    height: 40px;
+}
+
+.robot-selection{
+    margin: 45px;
+    border: 2px solid blue;
+    height: 175px;
+    width: 500px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.scores{
+    display: flex;
+    gap: 20px;
+    border: 2px black solid;
+    padding: 20px;
+    text-align: center;
+}
+
+#resetGame{
+    padding: 10px;
+    margin: 10px;
+}

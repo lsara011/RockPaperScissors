@@ -1,8 +1,6 @@
 const getHumanInput = () => {
     let humanResponse;
-    do {
-        humanResponse = prompt("Rock, Paper, or Scissors?").toLowerCase();
-    } while (!["rock", "paper", "scissors"].includes(humanResponse));
+    humanResponse = prompt("Rock, Paper, or Scissors?").toLowerCase();
     return humanResponse;
 };
 
@@ -10,49 +8,64 @@ const getComputerInput = () => {
     const computerResponse = Math.floor(Math.random() * 3) + 1;
     switch (computerResponse) {
         case 1:
-            return "rock";  // Use lowercase
+            return "Rock";
         case 2:
-            return "paper"; // Use lowercase
+            return "Paper";
         case 3:
-            return "scissors"; // Use lowercase
+            return "Scissors";
     }
 };
 
-const game = () => {
-    let humanPoints = 0;
-    let computerPoints = 0;
+let human = 0;
+let robot = 0;
 
-    while (humanPoints < 3 && computerPoints < 3) {
-        const humanResponse = getHumanInput();
-        const computerResponse = getComputerInput();
+function playRound(humanInput) {
+    let humanText = document.getElementById("humanScore");
+    let robotText = document.getElementById("robotScore");
+    let text = getComputerInput();
+    const rText = document.getElementById("robotText");
+    const promptText = document.getElementById("Prompt");
 
-        console.log("Human chooses: " + humanResponse.charAt(0).toUpperCase() + humanResponse.slice(1));
-        console.log("Computer chooses: " + computerResponse.charAt(0).toUpperCase() + computerResponse.slice(1));
+    rText.textContent = text;
 
-        if ((humanResponse === "rock" && computerResponse === "scissors") ||
-            (humanResponse === "paper" && computerResponse === "rock") ||
-            (humanResponse === "scissors" && computerResponse === "paper")) {
-            console.log("You win this round!");
-            humanPoints += 1;
-        } else if ((computerResponse === "rock" && humanResponse === "scissors") ||
-                   (computerResponse === "paper" && humanResponse === "rock") ||
-                   (computerResponse === "scissors" && humanResponse === "paper")) {
-            console.log("Computer wins this round!");
-            computerPoints += 1;
-        } else {
-            console.log("It's a tie!");
-        }
+    const humanChoice = humanInput.toLowerCase();
+    const computerChoice = text.toLowerCase();
 
-        console.log("Score - Human: " + humanPoints + " Computer: " + computerPoints);
-    }
-
-    if (humanPoints === 3) {
-        console.log("You Win!");
+    if (humanChoice === computerChoice) {
+        promptText.textContent = "It's a tie!";
+    } else if (
+        (humanChoice === 'rock' && computerChoice === 'scissors') ||
+        (humanChoice === 'paper' && computerChoice === 'rock') ||
+        (humanChoice === 'scissors' && computerChoice === 'paper')
+    ) {
+        promptText.textContent = "Human wins!";
+        human += 1;
     } else {
-        console.log("You Lose.");
+        promptText.textContent = "Computer wins!";
+        robot += 1;
     }
-};
 
-game();
+    humanText.textContent = human;
+    robotText.textContent = robot;
+    if (human == 5) {
+        alert("Human Wins This Round! :D")
+        resetGame()
+    }
+    else if(robot == 5){
+        alert("Computer Wins :(")
+        resetGame() 
+    }
+}
 
-// /Users/luissaravia/VSCode/Odin Project/Odin Exercises - JavaScript/repos/rps.js
+function resetGame(){
+    human = 0
+    robot = 0   
+
+    let humanText = document.getElementById("humanScore");
+    let robotText = document.getElementById("robotScore");
+    const rText = document.getElementById("robotText");
+    const promptText = document.getElementById("Prompt");
+    humanText.textContent = 0
+    robotText.textContent = 0
+    rText.textContent = "Select a button to play against a robot!"    
+}

@@ -1,0 +1,40 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rock Paper Scissors</title>
+    </head>
+    <body>
+        <section>
+            <div class="human-selection">
+                <h1>Player Selection</h1>
+                <div class="buttons">
+                    <button id="btn1" onclick="playRound('rock')">Rock</button>
+                    <button id="btn2" onclick="playRound('paper')">Paper</button>
+                    <button id="btn3" onclick="playRound('scissors')">Scissors</button>
+                </div>
+            </div>
+
+            <div class="robot-selection">
+                <h1>Robot Selection</h1>
+                <h2 id="robotText">Select a button to play against a robot!</h2>
+            </div>
+            <h3 id="Prompt">Select a choice</h3>
+            <div class="scores">
+                
+                <div class="human">
+                    <h1>User</h1>
+                    <h1 id="humanScore">0</h1>
+                </div>
+                <div class="robot">
+                    <h1 >Computer</h1>
+                    <h1 id="robotScore">0</h1>
+                </div>
+            </div>
+            <button id="resetGame" onClick="resetGame()" >Reset Game</button>
+        </section>
+        <script src="rps.js"></script>
+    </body>
+    </html>
